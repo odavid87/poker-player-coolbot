@@ -22,7 +22,7 @@ class Player
     {
         $strategy = $this->getStrategy();
         $betAmount = $strategy->betRequest($game);
-        var_dump($betAmount);
+        error_log($betAmount);
         return $betAmount;
     }
 
