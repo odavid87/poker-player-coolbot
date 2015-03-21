@@ -16,9 +16,13 @@ class MyPlayer
     	if (!empty($player['hole_cards']))
     	{
     	    $this->hand = new MyHand($player['hole_cards']);
-    	    var_dump($this->hand);
     	}
-    }   
+    }
+    
+    public function getMyHand()
+    {
+        return $this->hand;
+    }
 
     public function getId()
     {
