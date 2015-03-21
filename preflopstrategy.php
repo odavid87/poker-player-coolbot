@@ -5,7 +5,7 @@ class PreFlopStrategy extends AbstractBetStrategy
     {
         $myself = $game->getActivePlayer();
         $myHand = $myself->getMyHand();
-        if ($game->getNumberOfActivePlayers() > 2) {
+        if ($game->getNumberOfActivePlayers() > 3) {
             if ($myHand->hasHighPair()) {
                 return $this->betAmount($game->call());
             }
