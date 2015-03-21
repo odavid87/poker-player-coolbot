@@ -1,7 +1,7 @@
 <?php
 class MyHand
 {
-    const HIGH_VALUE = 18;
+    const HIGH_VALUE = 20;
     /**
      * @var array
      */
@@ -17,9 +17,9 @@ class MyHand
 
     public function hasPotential()
     {
-        return $this->isAPair()
-            || $this->isSameSuit() && $this->isHighValue()
-            || $this->isConnected() && $this->isHighValue();
+        return ($this->isAPair() && $this->isHighValue())
+            || ($this->isSameSuit() && $this->isHighValue())
+            || ($this->isConnected() && $this->isHighValue());
     }
 
     public function isAPair()
