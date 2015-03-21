@@ -6,7 +6,8 @@ include('myhand.php');
 include('card.php');
 include('handstate.php');
 include('abstractbetstrategy.php');
-include('preFlopStrategy.php');
+include('preflopstrategy.php');
+include('postflopstrategy.php');
 
 class Player
 {

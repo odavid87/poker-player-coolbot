@@ -11,7 +11,7 @@ abstract class AbstractValueValidator
 
         $numberOfPairs = 0;
         foreach ($this->ranks as $rankValue) {
-            if ($rankValue > 1) $numberOfPairs++;
+            if ($rankValue == 2) $numberOfPairs++;
         }
         return $numberOfPairs;
     }
