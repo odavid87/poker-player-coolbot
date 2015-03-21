@@ -13,6 +13,9 @@ class Game
 		$this->players = $gameState['players'];
 		$this->currentBuyIn = $gameState['current_buy_in'];
 		$this->minimumRaise = $gameState['minimum_raise'];
+		
+		$communityCards = !empty($gameState['community_cards']) ? $gameState['community_cards'] : array();
+		$this->handState = new HandState($communityCards);
 	}
 
 	public function isDealer(Player $player)
@@ -23,6 +26,11 @@ class Game
 	public function getDealer()
 	{
 		return $this->getPlayerById($this->dealerId);
+	}
+
+	public function getHandState()
+	{
+		return $this->handState;
 	}
 
 	public function getPlayerById($id)
