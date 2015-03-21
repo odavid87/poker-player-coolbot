@@ -5,7 +5,7 @@ class OnePairValueValidator extends AbstractValueValidator
     {
         foreach ($this->ranks as $rank => $rankCount) {
             if ($rankCount == 2) {
-				$card = new Card($rank, 'spades');
+				$card = new Card(array('rank' => $rank, 'suit' => 'spades'));
 				if ($card->isFigure()) return true;
 			}
         }
