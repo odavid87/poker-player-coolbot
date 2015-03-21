@@ -6,9 +6,6 @@ class PostFlopStrategy extends AbstractBetStrategy
         $myself = $game->getActivePlayer();
         $allCards = array_merge($myself->getMyHand()->getCards(), $game->getCommunityCards());
 
-        $allCardsFormatted = array_map(function(Card $card){
-            return $card->getRank() . strtoupper(substr($card->getSuit(), 0, 1));
-        }, $allCards);
 
 
         if ($game->isDealer($myself)) {
