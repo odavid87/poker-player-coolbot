@@ -9,7 +9,7 @@ class PostFlopStrategy extends AbstractBetStrategy
         $allCardsFormatted = array_map(function(Card $card){
             return $card->getRank() . strtoupper(substr($card->getSuit(), 0, 1));
         }, $allCards);
-        
+
 
         if ($game->isDealer($myself)) {
             return $this->betAmount($game->minimalBid());
