@@ -30,7 +30,7 @@ abstract class AbstractValueValidator
     protected function fillSuits($cards)
     {
         foreach ($cards as $card) {
-            $this->suits[$card->getSuit()]++;
+            $this->suits[$card->getSuit()][] = $card;
         }
     }
 }
