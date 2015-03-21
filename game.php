@@ -4,14 +4,14 @@ class Game
 {
 	private $dealerId;
 	private $players;
-	private $currentByIn;
+	private $currentBuyIn;
 	private $minimumRaise;
 
 	function __construct($gameState)
 	{
 		$this->dealerId = $gameState['dealer'];
 		$this->players = $gameState['players'];
-		$this->currentByIn = $gameState['current_buy_in'];
+		$this->currentBuyIn = $gameState['current_buy_in'];
 		$this->minimumRaise = $gameState['minimum_raise'];
 	}
 
@@ -54,6 +54,6 @@ class Game
 	
 	public function minimalBid()
 	{
-		$this->current_buy_in + $this->minimum_raise;
+		return $this->currentBuyIn + $this->minimumRaise;
 	}
 }
