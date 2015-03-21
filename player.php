@@ -18,7 +18,7 @@ class Player
 
     public function betRequest(Game $game)
     {
-        $myself = $game->getPlayerByName($this->myName);
+        $myself = $game->getActivePlayer();
         if ($game->isDealer($myself)) {
             return $this->betAmount($game->minimalBid());
         } else if ($myself->getMyHand()->hasPotential()) {

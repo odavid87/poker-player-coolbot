@@ -6,6 +6,7 @@ class MyPlayer
     private $id;
     private $stack;
     private $bet;
+    private $hand;
 
     function __construct($player)
     {   
