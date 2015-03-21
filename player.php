@@ -15,6 +15,11 @@ class Player
 
     private function raiseMinimum($gameState)
     {
-        return (int) $gameState['minimum_raise'];
+        return $gameState['current_buy_in'] + $gameState['minimum_raise'];
+    }
+
+    private function betAmount($amount)
+    {
+        return (int) $amount;
     }
 }
