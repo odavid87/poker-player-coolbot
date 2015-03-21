@@ -8,7 +8,5 @@ $player = new Player('Bob');
 
 $game = Game::createFromJson($gameStateJson);
 
-var_dump($game->getHandState());
-
-var_dump($player->betRequest($game));
+$player->betRequest($game);
 

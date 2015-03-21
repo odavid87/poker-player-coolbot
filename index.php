@@ -1,7 +1,5 @@
 <?php
 
-echo "futunk";
-
 require_once('player.php');
 
 $player = new Player('coolbot');
