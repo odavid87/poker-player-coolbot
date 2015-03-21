@@ -15,6 +15,11 @@ class MyHand
         );
     }
 
+    public function hasHighPair()
+    {
+        return $this->isAPair() && $this->isHighValue();
+    }
+
     public function hasPotential()
     {
         return ($this->isAPair() && $this->isHighValue())

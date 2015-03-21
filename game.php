@@ -22,6 +22,15 @@ class Game
         }
 	}
 
+    public function getNumberOfActivePlayers()
+    {
+        $num = 0;
+        foreach ($this->players as $player) {
+            if ($player['status'] == 'active') $num++;
+        }
+        return $num;
+    }
+
 	public function isDealer(MyPlayer $player)
 	{
 		return $this->dealerId == $player->getId();

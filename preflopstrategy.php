@@ -4,7 +4,15 @@ class PreFlopStrategy extends AbstractBetStrategy
     public function betRequest(Game $game)
     {
         $myself = $game->getActivePlayer();
-        if ($myself->getMyHand()->hasPotential()) {
+        $myHand = $myself->getMyHand();
+        if ($game->getNumberOfActivePlayers() > 2) {
+            if ($myHand->hasHighPair()) {
+                return $this->betAmount($game->call());
+            }
+            return 0;
+        }
+
+        if ($myHand->hasPotential()) {
             return $this->betAmount($game->minimalBid());
         } else {
             return 0;
