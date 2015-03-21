@@ -18,7 +18,7 @@ class MyHand
     public function hasPotential()
     {
         return $this->isAPair()
-            || $this->isSameSuit()
+            || $this->isSameSuit() && $this->isHighValue()
             || $this->isConnected() && $this->isHighValue();
     }
 
