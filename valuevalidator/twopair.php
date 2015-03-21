@@ -1,8 +1,8 @@
 <?php
 class TwoPairValueValidator extends AbstractValueValidator
 {
-    public function isValid(array $cards)
+    public function isValid()
     {
-        return 2 == $this->getNumberOfPairs($cards);
+        return 2 == $this->getNumberOfPairs();
     }
 }

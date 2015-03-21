@@ -1,10 +1,10 @@
 <?php
 class FullHouseValueValidator extends AbstractValueValidator
 {
-    public function isValid(array $cards)
+    public function isValid()
     {
-        $onePair = new OnePairValueValidator();
-        $drillValidator = new DrillValueValidator();
-        return $onePair->isValid($cards) && $drillValidator->isValid($cards);
+        $onePair = new OnePairValueValidator($this->cards);
+        $drillValidator = new DrillValueValidator($this->cards);
+        return $onePair->isValid() && $drillValidator->isValid();
     }
 }
