@@ -1,5 +1,5 @@
 <?php
-class FourOfAKindValidator extends AbstractValueValidator
+class FourOfAKindValueValidator extends AbstractValueValidator
 {
     public function isValid(array $cards)
     {
