@@ -1,13 +1,13 @@
 <?php
 class StraightFlushValueValidator extends AbstractValueValidator
 {
-    public function isValid(array $cards)
+    public function isValid()
     {
-        $flushValidator = new FlushValueValidator();
-        if ($flushValidator->isValid($cards)) {
+        $flushValidator = new FlushValueValidator($this->cards);
+        if ($flushValidator->isValid()) {
             $suitedCards = $this->getSuitedCards();
-            $straightValidator = new StraightValueValidator();
-            return $straightValidator->isValid($suitedCards);
+            $straightValidator = new StraightValueValidator($this->cards);
+            return $straightValidator->isValid();
         }
     }
 

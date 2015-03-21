@@ -8,6 +8,7 @@ include('handstate.php');
 include('abstractbetstrategy.php');
 include('preflopstrategy.php');
 include('postflopstrategy.php');
+include('valuevalidator/abstract.php');
 
 class Player
 {

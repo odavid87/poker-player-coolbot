@@ -1,11 +1,13 @@
 <?php
 
 include('drill.php');
+include('flush.php');
 include('fourofakind.php');
 include('fullhouse.php');
 include('onepair.php');
 include('twopair.php');
 include('straight.php');
+include('straightflush.php');
 
 abstract class AbstractValueValidator
 {

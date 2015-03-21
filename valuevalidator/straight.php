@@ -6,7 +6,7 @@ class StraightValueValidator extends AbstractValueValidator
         $values = array_keys($this->ranks);
         sort($values);
         
-        $total = 0;
+        $total = 1;
         $prev = -1;
         foreach ($values as $value) {
             if ($prev + 1 == $value)
@@ -14,6 +14,7 @@ class StraightValueValidator extends AbstractValueValidator
                 $total++;
             }
             $prev = $value;
+			var_dump($total);
         }
         
         return $total >= 5;
