@@ -14,7 +14,7 @@ class MyPlayer
     	$this->id = $player['id'];
     	$this->stack = $player['stack'];
     	$this->bet = $player['bet'];
-    	if (!isset($player['hole_cards']))
+    	if (isset($player['hole_cards']))
     	{
     	    $this->hand = new MyHand($player['hole_cards']);
     	}

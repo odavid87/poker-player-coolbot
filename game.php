@@ -16,7 +16,7 @@ class Game
 		$this->minimumRaise = $gameState['minimum_raise'];
 		$this->inAction = $gameState['in_action'];
 		
-		$communityCards = !isset($gameState['community_cards']) ? $gameState['community_cards'] : array();
+		$communityCards = isset($gameState['community_cards']) ? $gameState['community_cards'] : array();
 		$this->handState = new HandState($communityCards);
 	}
 
