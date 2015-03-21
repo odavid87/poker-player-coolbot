@@ -14,11 +14,11 @@ class Game
 		$this->currentBuyIn = $gameState['current_buy_in'];
 		$this->minimumRaise = $gameState['minimum_raise'];
 		
-		$communityCards = !empty($gameState['community_cards']) ? $gameState['community_cards'] : array();
+		$communityCards = !isset($gameState['community_cards']) ? $gameState['community_cards'] : array();
 		$this->handState = new HandState($communityCards);
 	}
 
-	public function isDealer(Player $player)
+	public function isDealer(MyPlayer $player)
 	{
 		return $this->dealerId == $player->getId();
 	}

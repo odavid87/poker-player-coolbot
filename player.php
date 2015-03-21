@@ -4,6 +4,7 @@ include('game.php');
 include('myplayer.php');
 include('myhand.php');
 include('card.php');
+include('handstate.php');
 
 class Player
 {
