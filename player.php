@@ -3,9 +3,11 @@
 class Player
 {
     const VERSION = "Default PHP folding player";
+	const NAME = 'coolbot';
 
     public function betRequest($game_state)
     {
+		var_dump($this->getMySelf($game_state));
         return $this->betAmount($this->raiseMinimum($game_state));
     }
 
@@ -22,4 +24,15 @@ class Player
     {
         return (int) $amount;
     }
+
+	private function getMySelf($gameState)
+	{
+		foreach($gameState['players'] as $player)
+		{
+			if ($player['name'] == $Player::NAME)
+			{
+				return $player;
+			}
+		}
+	}
 }
