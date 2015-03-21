@@ -3,6 +3,13 @@ class OnePairValueValidator extends AbstractValueValidator
 {
     public function isValid()
     {
-        return 1 == $this->getNumberOfPairs();
+        foreach ($this->ranks as $rank => $rankCount) {
+            if ($rankCount == 2) {
+				$card = new Card($rank, 'spades');
+				if ($card->isFigure()) return true;
+			}
+        }
+
+		return false;
     }
 }
