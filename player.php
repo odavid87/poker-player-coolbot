@@ -3,12 +3,14 @@
 class Player
 {
     const VERSION = "Default PHP folding player";
-	const MY_NAME = 'coolbot';
+	const MY_NAME = "coolbot";
 
-    public function betRequest($game_state)
+    public function betRequest($gameState)
     {
-		var_dump($this->getMySelf($game_state));
-        return $this->betAmount($this->raiseMinimum($game_state));
+		#$game = new Game($gameState);
+		#var_dump($this->getMySelf($game));
+
+        return $this->betAmount($this->raiseMinimum($gameState));
     }
 
     public function showdown($game_state)
@@ -25,14 +27,8 @@ class Player
         return (int) $amount;
     }
 
-	private function getMySelf($gameState)
+	private function getMySelf($game)
 	{
-		foreach($gameState['players'] as $player)
-		{
-			if ($player['name'] == self::MY_NAME)
-			{
-				return $player;
-			}
-		}
+		return $game->getPlayerByName('coolbot');
 	}
 }
