@@ -5,7 +5,8 @@ class FlushValueValidator extends AbstractValueValidator
     {
         $this->fillSuits($cards);
         foreach ($this->suits as $suit) {
-            if ($suit == 5) return true;
+            if (count($suit) > 4) return true;
         }
+        return false;
     }
 }
