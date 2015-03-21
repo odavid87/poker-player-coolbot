@@ -3,7 +3,7 @@
 class Player
 {
     const VERSION = "Default PHP folding player";
-	const NAME = 'coolbot';
+	const MY_NAME = 'coolbot';
 
     public function betRequest($game_state)
     {
@@ -29,7 +29,7 @@ class Player
 	{
 		foreach($gameState['players'] as $player)
 		{
-			if ($player['name'] == $Player::NAME)
+			if ($player['name'] == self::MY_NAME)
 			{
 				return $player;
 			}
