@@ -2,6 +2,7 @@
 abstract class AbstractValueValidator
 {
     protected $ranks;
+    protected $suits;
 
     abstract public function isValid(array $cards);
 
@@ -23,6 +24,13 @@ abstract class AbstractValueValidator
     {
         foreach ($cards as $card) {
             $this->ranks[$card->getRank()]++;
+        }
+    }
+
+    protected function fillSuits($cards)
+    {
+        foreach ($cards as $card) {
+            $this->suits[$card->getSuit()]++;
         }
     }
 }
