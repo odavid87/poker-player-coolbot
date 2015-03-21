@@ -3,6 +3,8 @@ class StraightValueValidator extends AbstractValueValidator
 {
     public function isValid(array $cards)
     {
+        $this->fillRanks($cards);
+        
         $values = array_keys($this->ranks);
         sort($values);
         
