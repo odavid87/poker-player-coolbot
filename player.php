@@ -21,7 +21,9 @@ class Player
     public function betRequest(Game $game)
     {
         $strategy = $this->getStrategy();
-        return $strategy->betRequest($game);
+        $betAmount = $strategy->betRequest($game);
+        var_dump($betAmount);
+        return $betAmount;
     }
 
     public function showdown($game_state)
