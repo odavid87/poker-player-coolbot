@@ -15,6 +15,13 @@ class MyHand
         );
     }
 
+    public function hasPotential()
+    {
+        return $this->isAPair()
+            || $this->isSameSuit()
+            || $this->isConnected() && $this->isHighValue();
+    }
+
     public function isAPair()
     {
         return $this->cards[0]->getRank() == $this->cards[1]->getRank();
@@ -55,6 +62,4 @@ class MyHand
 
         return $c1Value + $c2Value >= self::HIGH_VALUE;
     }
-
-
 }
