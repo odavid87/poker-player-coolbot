@@ -1,9 +1,9 @@
 <?php
-class PreFlopStrategy extends AbstractStrategy
+class PreFlopStrategy extends AbstractBetStrategy
 {
     public function betRequest(Game $game)
     {
-        $myself = $game->getPlayerByName($this->myName);
+        $myself = $game->getActivePlayer();
         if ($game->isDealer($myself)) {
             return $this->betAmount($game->minimalBid());
         } else if ($myself->getMyHand()->hasPotential()) {
@@ -11,6 +11,5 @@ class PreFlopStrategy extends AbstractStrategy
         } else {
             return 0;
         }
-
     }
 }

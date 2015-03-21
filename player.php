@@ -5,6 +5,8 @@ include('myplayer.php');
 include('myhand.php');
 include('card.php');
 include('handstate.php');
+include('abstractbetstrategy.php');
+include('preFlopStrategy.php');
 
 class Player
 {
@@ -18,23 +20,16 @@ class Player
 
     public function betRequest(Game $game)
     {
-        $myself = $game->getActivePlayer();
-        if ($game->isDealer($myself)) {
-            return $this->betAmount($game->minimalBid());
-        } else if ($myself->getMyHand()->hasPotential()) {
-            return $this->betAmount($game->minimalBid());
-        } else {
-            return 0;
-        }
-
+        $strategy = $this->getStrategy();
+        return $strategy->betRequest($game);
     }
 
     public function showdown($game_state)
     {
     }
 
-    private function betAmount($amount)
+    private function getStrategy()
     {
-        return (int) $amount;
+        return new PreFlopStrategy();
     }
 }
