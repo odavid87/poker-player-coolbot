@@ -15,6 +15,6 @@ class Player
 
     private function raiseMinimum($gameState)
     {
-        return $gameState['minimum_raise'];
+        return (int) $gameState['minimum_raise'];
     }
 }
