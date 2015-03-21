@@ -15,10 +15,17 @@ class Player
 	    $this->myName = $myName;
 	}
 
-    public function betRequest($game)
+    public function betRequest(Game $game)
     {
-		var_dump($game->getPlayerByName($this->myName));
-        return $this->betAmount($game->minimalBid());
+        $myself = $game->getPlayerByName($this->myName);
+        if ($game->isDealer($myself)) {
+            return $this->betAmount($game->minimalBid());
+        } else if ($myself->getMyHand()->hasPotential()) {
+            return $this->betAmount($game->minimalBid());
+        } else {
+            return 0;
+        }
+
     }
 
     public function showdown($game_state)
