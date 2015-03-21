@@ -28,7 +28,7 @@ class PostFlopStrategy extends AbstractBetStrategy
             new StraightValueValidator($cards),
             new DrillValueValidator($cards),
             new TwoPairValueValidator($cards),
-            new OnePairValueValidator($cards),
+            // new OnePairValueValidator($cards),
         );
     }
 }
