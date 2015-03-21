@@ -6,15 +6,17 @@ class PostFlopStrategy extends AbstractBetStrategy
         $myself = $game->getActivePlayer();
         $allCards = array_merge($myself->getMyHand()->getCards(), $game->getCommunityCards());
 
-        $validators = $this->getValidators($allCards);
-        foreach ($validators as $validator) {
-            if ($validator->isValid()) {
-                if ($validator instanceof OnePairValueValidator) {
-                    return $this->betAmount($game->call());
-                }
-                return $this->betAmount($game->minimalBid());
+        $allCardsWinnerValidator = $this->getWinnerValidator($this->getValidators($allCards));
+        $withoutMyCardsWinnerValidator = $this->getWinnerValidator($this->getValidators($myself->getMyHand()->getCards()));
+
+
+        if ($this->myCardsAreUsedToMakeHand($allCardsWinnerValidator, $withoutMyCardsWinnerValidator)){
+            if ($allCardsWinnerValidator instanceof TwoPairValueValidator) {
+                return $this->betAmount($game->call());
             }
+            return $this->betAmount($game->minimalBid());
         }
+
         return 0;
     }
 
@@ -28,7 +30,24 @@ class PostFlopStrategy extends AbstractBetStrategy
             new StraightValueValidator($cards),
             new DrillValueValidator($cards),
             new TwoPairValueValidator($cards),
-            // new OnePairValueValidator($cards),
         );
+    }
+
+    /**
+     * @param $validators
+     */
+    protected function getWinnerValidator($validators)
+    {
+        foreach ($validators as $validator) {
+            if ($validator->isValid()) {
+                $winnerValidator = $validator;
+                return $winnerValidator;
+            }
+        }
+    }
+
+    private function myCardsAreUsedToMakeHand($allCardsWinnerValidator, $withoutMyCardsWinnerValidator)
+    {
+        return get_class($allCardsWinnerValidator) != get_class($withoutMyCardsWinnerValidator);
     }
 }
