@@ -41,7 +41,10 @@ class MyHand
 
     public function isHighValue()
     {
+        $c1Value = $this->cards[0]->isFigure() ? 10 : $this->cards[0]->getRank();
+        $c2Value = $this->cards[1]->isFigure() ? 10 : $this->cards[1]->getRank();
 
+        return $c1Value + $c2Value >= self::HIGH_VALUE;
     }
 
 
