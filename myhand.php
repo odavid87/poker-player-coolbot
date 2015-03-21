@@ -15,6 +15,13 @@ class MyHand
         );
     }
 
+    public function hasPotential()
+    {
+        return $this->isAPair()
+            || $this->isSameSuit()
+            || $this->isConnected() && $this->isHighValue();
+    }
+
     public function isAPair()
     {
         return $this->cards[0]->getRank() == $this->cards[1]->getRank();
@@ -27,14 +34,23 @@ class MyHand
 
     public function isConnected()
     {
-        if ($this->cards[0]->isAce() && $this->cards[1]->getValue() == 2) {
+        // ace with 2 or K
+        if ($this->cards[0]->isAce()
+            && ($this->cards[1]->getValue() == 2
+                || $this->cards[1]->getRank() == "K")
+        ) {
             return true;
         }
 
-        if ($this->cards[1]->isAce() && $this->cards[0]->getValue() == 2) {
+        // ace with 2 or K
+        if ($this->cards[1]->isAce()
+            && ($this->cards[0]->getValue() == 2
+                || $this->cards[0]->getRank() == "K")
+        ) {
             return true;
         }
 
+        // two number cards
         $diff = abs($this->cards[0]->getValue() - $this->cards[1]->getValue());
         return $diff == 1;
     }
@@ -46,6 +62,4 @@ class MyHand
 
         return $c1Value + $c2Value >= self::HIGH_VALUE;
     }
-
-
 }
