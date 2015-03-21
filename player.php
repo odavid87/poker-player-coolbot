@@ -22,7 +22,7 @@ class Player
 
     public function betRequest(Game $game)
     {
-        $strategy = $this->getStrategy();
+        $strategy = $this->getStrategy($game);
         $betAmount = $strategy->betRequest($game);
         return $betAmount;
     }
@@ -31,8 +31,12 @@ class Player
     {
     }
 
-    private function getStrategy()
+    private function getStrategy(Game $game)
     {
-        return new PreFlopStrategy();
+        if ($game->getHandState()->isPreFlop()) {
+            return new PreFlopStrategy();
+        } else {
+            return new PostFlopStrategy();
+        }
     }
 }

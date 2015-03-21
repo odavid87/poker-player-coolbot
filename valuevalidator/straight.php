@@ -14,7 +14,6 @@ class StraightValueValidator extends AbstractValueValidator
                 $total++;
             }
             $prev = $value;
-			var_dump($total);
         }
         
         return $total >= 5;

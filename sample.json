@@ -31,12 +31,12 @@
             "bet": 80,
             "hole_cards": [
                 {
-                    "rank": "6",
-                    "suit": "hearts"
+                    "rank": "7",
+                    "suit": "spades"
                 },
                 {
-                    "rank": "K",
-                    "suit": "spades"
+                    "rank": "7",
+                    "suit": "hearts"
                 }
             ],
             "id": 1,

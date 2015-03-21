@@ -7,7 +7,7 @@ class Game
 	private $currentBuyIn;
 	private $minimumRaise;
 	private $inAction;
-    private $communityCards;
+    private $communityCards = array();
 
 	function __construct($gameState)
 	{

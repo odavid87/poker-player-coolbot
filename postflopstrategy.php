@@ -6,14 +6,26 @@ class PostFlopStrategy extends AbstractBetStrategy
         $myself = $game->getActivePlayer();
         $allCards = array_merge($myself->getMyHand()->getCards(), $game->getCommunityCards());
 
-
-
-        if ($game->isDealer($myself)) {
-            return $this->betAmount($game->minimalBid());
-        } else if ($myself->getMyHand()->hasPotential()) {
-            return $this->betAmount($game->minimalBid());
-        } else {
-            return 0;
+        $validators = $this->getValidators($allCards);
+        foreach ($validators as $validator) {
+            if ($validator->isValid()) {
+                return $this->betAmount($game->minimalBid());
+            }
         }
+        return 0;
+    }
+
+    private function getValidators(array $cards)
+    {
+        return array(
+            new StraightFlushValueValidator($cards),
+            new FourOfAKindValueValidator($cards),
+            new FullHouseValueValidator($cards),
+            new FlushValueValidator($cards),
+            new StraightValueValidator($cards),
+            new DrillValueValidator($cards),
+            new TwoPairValueValidator($cards),
+            new OnePairValueValidator($cards),
+        );
     }
 }
