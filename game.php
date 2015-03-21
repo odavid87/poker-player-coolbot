@@ -7,6 +7,7 @@ class Game
 	private $currentBuyIn;
 	private $minimumRaise;
 	private $inAction;
+    private $communityCards;
 
 	function __construct($gameState)
 	{
@@ -15,9 +16,10 @@ class Game
 		$this->currentBuyIn = $gameState['current_buy_in'];
 		$this->minimumRaise = $gameState['minimum_raise'];
 		$this->inAction = $gameState['in_action'];
-		
 		$communityCards = isset($gameState['community_cards']) ? $gameState['community_cards'] : array();
-		$this->handState = new HandState($communityCards);
+        foreach ($communityCards as $cardArray) {
+            $this->communityCards[] = new Card($cardArray);
+        }
 	}
 
 	public function isDealer(MyPlayer $player)
@@ -27,7 +29,7 @@ class Game
 	
 	public function getHandState()
 	{
-		return $this->handState;
+		return new HandState($this->communityCards);
 	}
 
     public function getActivePlayer()
@@ -50,4 +52,12 @@ class Game
 	{
 		return $this->currentBuyIn + $this->minimumRaise;
 	}
+
+    /**
+     * @return array
+     */
+    public function getCommunityCards()
+    {
+        return $this->communityCards;
+    }
 }

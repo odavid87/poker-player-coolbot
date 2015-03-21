@@ -62,4 +62,12 @@ class MyHand
 
         return $c1Value + $c2Value >= self::HIGH_VALUE;
     }
+
+    /**
+     * @return array
+     */
+    public function getCards()
+    {
+        return $this->cards;
+    }
 }
