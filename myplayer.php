@@ -13,6 +13,11 @@ class MyPlayer
     	$this->id = $player['id'];
     	$this->stack = $player['stack'];
     	$this->bet = $player['bet'];
+    	if (!empty($player['hole_cards']))
+    	{
+    	    $this->hand = new MyHand($player['hole_cards']);
+    	    var_dump($this->hand);
+    	}
     }   
 
     public function getId()
