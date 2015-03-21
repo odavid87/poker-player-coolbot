@@ -28,5 +28,13 @@ class MyPlayer
     public function getId()
     {
 		return $this->id;
-    }   
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBet()
+    {
+        return $this->bet;
+    }
 }

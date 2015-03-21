@@ -9,6 +9,9 @@ class PostFlopStrategy extends AbstractBetStrategy
         $validators = $this->getValidators($allCards);
         foreach ($validators as $validator) {
             if ($validator->isValid()) {
+                if ($validator instanceof OnePairValueValidator) {
+                    return $this->betAmount($game->call());
+                }
                 return $this->betAmount($game->minimalBid());
             }
         }

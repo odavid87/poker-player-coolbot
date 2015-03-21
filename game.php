@@ -53,6 +53,11 @@ class Game
 		return $this->currentBuyIn + $this->minimumRaise;
 	}
 
+    public function call()
+    {
+        return $this->currentBuyIn - $this->getActivePlayer()->getBet();
+    }
+
     /**
      * @return array
      */
