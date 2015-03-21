@@ -16,6 +16,7 @@ class Player
     public function betRequest($game)
     {
 		var_dump($game->getPlayerByName($this->myName));
+		var_dump($game->minimalBid());
 
         return $this->betAmount($game->minimalBid());
     }
