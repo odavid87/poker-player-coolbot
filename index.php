@@ -2,15 +2,18 @@
 
 require_once('player.php');
 
-$player = new Player();
+$player = new Player('coolbot');
+
 
 switch($_POST['action'])
 {
     case 'bet_request':
-        echo $player->betRequest(json_decode($_POST['game_state'], true));
+        $game = Game::createFromJson($_POST['game_state']);
+        echo $player->betRequest($game);
         break;
     case 'showdown':
-        $player->showdown(json_decode($_POST['game_state'], true));
+        $game = Game::createFromJson($_POST['game_state']);
+        $player->showdown($game);
         break;
     case 'version':
         echo Player::VERSION;

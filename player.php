@@ -1,34 +1,31 @@
 <?php
 
+include('game.php');
+include('myplayer.php');
+
 class Player
 {
     const VERSION = "Default PHP folding player";
-	const MY_NAME = "coolbot";
+    private $myName;
+    
+	function __construct($myName)
+	{
+	    $this->myName = $myName;
+	}
 
-    public function betRequest($gameState)
+    public function betRequest($game)
     {
-		#$game = new Game($gameState);
-		#var_dump($this->getMySelf($game));
+		var_dump($game->getPlayerByName($this->myName));
 
-        return $this->betAmount($this->raiseMinimum($gameState));
+        return $this->betAmount($game->minimalBid());
     }
 
     public function showdown($game_state)
     {
     }
 
-    private function raiseMinimum($gameState)
-    {
-        return $gameState['current_buy_in'] + $gameState['minimum_raise'];
-    }
-
     private function betAmount($amount)
     {
         return (int) $amount;
     }
-
-	private function getMySelf($game)
-	{
-		return $game->getPlayerByName('coolbot');
-	}
 }

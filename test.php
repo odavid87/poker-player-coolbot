@@ -4,7 +4,8 @@ include('player.php');
 
 $gameStateJson = file_get_contents('sample.json');
 
-$player = new Player();
+$player = new Player('Albert');
 
-var_dump($player->betRequest(json_decode($gameStateJson, true)));
+$game = Game::createFromJson($gameStateJson);
+var_dump($player->betRequest($game));
 
